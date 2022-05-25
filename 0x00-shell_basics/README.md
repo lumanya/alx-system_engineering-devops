@@ -14,3 +14,4 @@ ln -s command to create symbolic link
 cp -u copy without overwriting
 mv [[:upper:]]* move all uppercase to another directory
 script that deletes all files in the current working directory that end with the character ~
+mkdir command to create dircetory
