@@ -10,3 +10,4 @@ rm command to delete a filex
 rm -r command to delete directory
 cd - command to navigate to prevoius directory
 file command to determine type of file
+ln -s command to create symbolic link
