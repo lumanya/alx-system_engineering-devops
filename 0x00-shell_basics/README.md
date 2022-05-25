@@ -12,3 +12,4 @@ cd - command to navigate to prevoius directory
 file command to determine type of file
 ln -s command to create symbolic link
 cp -u copy without overwriting
+mv [[:upper:]]* move all uppercase to another directoryx
