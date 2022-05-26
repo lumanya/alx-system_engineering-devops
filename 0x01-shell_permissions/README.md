@@ -11,5 +11,5 @@ script to set 753 to a file
 script to copy file permission to another
 script to make directory and file permissions
 script to change only directory permissions
-
+script to change group and owners of directory and files
 
