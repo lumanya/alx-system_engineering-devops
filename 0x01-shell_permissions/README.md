@@ -8,4 +8,6 @@ script to set multiple peremision
 script to set executaion permision to all
 script to set permmisson to only o users
 script to set 753 to a file
+script to copy file permission to another
+
 
