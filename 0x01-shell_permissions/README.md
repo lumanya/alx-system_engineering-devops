@@ -7,4 +7,5 @@ script to make file executable for file woner
 script to set multiple peremision
 script to set executaion permision to all
 script to set permmisson to only o users
+script to set 753 to a file
 
