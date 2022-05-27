@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown vincent:staff $(find ./ )
+sudo chown vincent:staff ./*
