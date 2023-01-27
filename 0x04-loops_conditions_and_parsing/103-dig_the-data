@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Dig the data from extracted apache log file then
+# display format OCCURENCE_NUMBER IP HHTP_CODE
+awk '{print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
