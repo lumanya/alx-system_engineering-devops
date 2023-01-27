@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script display the visitors IP along with HTTP status from Apache File
+# log
+# formT: IP HTTP_CODE
+#
+awk '{print $1, $9}' apache-access.log
