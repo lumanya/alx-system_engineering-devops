@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This Script dispaly "Best School" 10 timesbut for the 9th iteration dispaly
+# Best sSchool the n Hi
+i=1
+while [ $i -le 10 ]
+do
+	echo "Best School"
+	if [ $i -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	(( i++ ))
+done
