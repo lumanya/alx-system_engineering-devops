@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script that display a list of currently running process proceses
+# fromat:
+# Must shpow all porcesses, for all users, includeing  those which might not
+# have be TTY
+# Display in a user-orineted format
+# display all processes (a): user-oriented (u), w/wo TTY (x), show heirachy (f)
+
+ps -auxf
