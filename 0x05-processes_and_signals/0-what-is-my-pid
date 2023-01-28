@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# this script display itwon PID
+# "$$"  hold value pid of current running process
+echo $$
