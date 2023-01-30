@@ -17,7 +17,7 @@ startme()
 
 stopme()
 {
-	kill "$(cat /var/run/my_process.pid)"
+	kill -15 "$(cat /var/run/my_process.pid)"
 	rm -f /var/run/my_process.pid
 }
 
@@ -26,11 +26,11 @@ case $1 in
 		      echo "manage_my_process started"
 			   ;;
 	stop) stopme
-		 echo "manage_my_process stoped"
+		 echo "manage_my_process stopped"
 		  ;;
 	restart) stopme
 			 startme
-			 echo "manage_my_process restated"
+			 echo "manage_my_process restarted"
 		 ;;
 	 *)
 		 echo "Usage: manage_my_process {start|stop|restart}"
