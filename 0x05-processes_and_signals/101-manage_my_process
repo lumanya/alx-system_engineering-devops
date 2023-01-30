@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Script that manages "manage_my_process"
+# It start manage_my_process
+# Creates a file containing its PID in "/var/run/my_process.pid"
+# Display manage_my_porcess staterd
+# when passing argument stop
+# stops manage_my_process
+# Delets the file /var/run/my_porcess.pid
+# Display manage_my_process stopped
+# when passing the argument restart
+
+startme()
+{
+    ./manage_my_process &
+	echo "$!" > /var/run/my_process.pid
+}
+
+stopme()
+{
+	kill "$(cat /var/run/my_process.pid)"
+	rm -f /var/run/my_process.pid
+}
+
+case $1 in
+	start)  startme
+		      echo "manage_my_process started"
+			   ;;
+	stop) stopme
+		 echo "manage_my_process stoped"
+		  ;;
+	restart) stopme
+			 startme
+			 echo "manage_my_process restated"
+		 ;;
+	 *)
+		 echo "Usage: manage_my_process {start|stop|restart}"
+		 ;;
+esac
