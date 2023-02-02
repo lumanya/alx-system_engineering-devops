@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script listens on potr 98 on localhost
+
+nc -l 98
