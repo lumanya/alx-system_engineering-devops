@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# script that configures a new ubuntu machine to respect above requirements
+
+sudo pat-get update
+sudo apt-get install nginx -y
+
+echo "Hello World!" | sudo tee /var/www/html/index.html
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/churchycodes.co.tz permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-available/default
+
+sudo service nginx restart
