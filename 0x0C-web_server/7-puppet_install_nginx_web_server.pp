@@ -5,40 +5,17 @@ package { 'nginx':
   ensure => installed,
 }
 
-# configure Nginx Server
-file { '/etc/nginx/sites-enabled/default':
-  content => "server {
-		listen 80 default_server;
-		listen [::]:80 default_server;
 
-		
-		root /var/www/html;
-		index index.html;
-
-
-		server_name _;
-
-		location / {
-			try_files $uri $uri/ =404;
-		}
-
-		location /redirect_me {
-			return 301 https://churchycodes.co.tz;
-		}
-		}",
+exec { 'Hello':
+  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
+  provider => shell,
 }
 
-# Remove default Nginx index.html file
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/blog.ehoneahobed.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
 }
 
-# Restart Nginx Service 
 service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => [
-    File['/etc/nginx/sites-enabled/default'],
-    File['/var/www/html/index.html'],
-  ],
+  ensure => running,
+  enable => true,
 }
