@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # script that configures a new ubuntu machine to respect above requirements
 
-sudo pat-get update
+sudo pat-get update -y
 sudo apt-get install nginx -y
 
 # code to redirect a specific endpoint (eg: redirect /redircet_me to hhtps://churchycodes.co.tz
@@ -11,7 +11,7 @@ sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-availab
 
 # code to create error page and add a redirect for 404
 echo "Ceci n'est pas une page\n" | sudo tee /var/www/html/404.html
-string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\tinternal;\n\t}"
+string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
 sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-available/default
 
 # restart the server 
