@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# configure ubuntu server with nginx and add custom header, X-Served-By
+
+# Install Nginx if not already installed
+sudo apt-get update
+sudo apt-get install nginx -y
+
+# Add the custom header to the Nginx configurations
+echo "add_header X-Served-By \$hostname;" | sudo tee /etc/nginx/conf.d/custom_header.conf
+
+# Restart Nginx service to apply the changes
+sudo service nginx restart
