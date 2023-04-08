@@ -3,7 +3,7 @@
 
 # Update the server
 sudo apt-get update -y
-
+sudo apt-get install nginx -y
 # Install HAProxy version 2.6 LTS
 sudo apt-get install haproxy=2.6.\* -y
 
