@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Dump MYSQl databases to backup.sql file
+mysqldump -u root -p"$1" --all-databases > backup.sql
+
+DATE=$(date +"%d-%m-%Y")
+
+# Compress backup.sql to day-month-year.tar.gz archive
+tar -czvf "$DATE.tar.gz" backup.sql
