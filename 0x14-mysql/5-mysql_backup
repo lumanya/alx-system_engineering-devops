@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Script to that do database backup
 # Dump MYSQl databases to backup.sql file
 mysqldump -u root -p"$1" --all-databases > backup.sql
 
