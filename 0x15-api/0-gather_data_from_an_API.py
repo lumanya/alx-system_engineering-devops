@@ -27,7 +27,7 @@ if __name__ == "__main__":
             if todo.get('completed'):
                 done += 1
 
-    print(f"Employee {employee} is done with tasks({done}/{tasks})")
+    print(f"Employee {employee} is done with tasks({done}/{tasks}):")
     for todo in r_todo.json():
         if todo.get('userId') == employeeId and todo.get('completed'):
             print("\t {}".format(todo.get('title')))
