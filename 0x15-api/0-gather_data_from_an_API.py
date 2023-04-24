@@ -3,31 +3,32 @@
  Python script, using REST API, for a given employee ID, List about his/her
  to do list progress. https://jsonplaceholder.typicode.com/
 """
+
 import requests
-from sys import argv
+import sys
 
 
-if __name__ == "__main__":
-    """ request user name from API"""
-    employeeId = int(argv[1])
+if __name__ == '__main__':
+    employeeId = sys.argv[1]
+    baseUrl = "https://jsonplaceholder.typicode.com/users"
+    url = baseUrl + "/" + employeeId
+
+    response = requests.get(url)
+    employeeName = response.json().get('name')
+
+    todoUrl = url + "/todos"
+    response = requests.get(todoUrl)
+    tasks = response.json()
     done = 0
-    tasks = 0
-    task_title = {}
+    done_tasks = []
 
-    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
-    r = requests.get(user_url)
-    employee = r.json().get('name')
+    for task in tasks:
+        if task.get('completed'):
+            done_tasks.append(task)
+            done += 1
 
-    # Gettig todos list
-    todo_url = "https://jsonplaceholder.typicode.com/todos"
-    r_todo = requests.get(todo_url)
-    for todo in r_todo.json():
-        if todo.get('userId') == employeeId:
-            tasks += 1
-            if todo.get('completed'):
-                done += 1
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employeeName, done, len(tasks)))
 
-    print(f"Employee {employee} is done with tasks({done}/{tasks}):")
-    for todo in r_todo.json():
-        if todo.get('userId') == employeeId and todo.get('completed'):
-            print("\t {}".format(todo.get('title')))
+    for task in done_tasks:
+        print("\t {}".format(task.get('title')))
