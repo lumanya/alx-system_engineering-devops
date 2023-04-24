@@ -3,8 +3,8 @@
  Python script, using REST API, for a given employee ID, List about his/her
  to do list progress. https://jsonplaceholder.typicode.com/
 """
-from sys import argv
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
