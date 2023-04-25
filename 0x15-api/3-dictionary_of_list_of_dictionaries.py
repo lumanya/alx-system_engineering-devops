@@ -1,12 +1,5 @@
 #!/usr/bin/python3
-"""Accessing a REST API for todo lists of employees and write to csv
- format: { "USER_ID": [ {"username": "USERNAME",
-"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS},
-{"username": "USERNAME", "task": "TASK_TITLE",
-"completed": TASK_COMPLETED_STATUS}, ... ],
- "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE",
-"completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME",
-"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ]}
+""" Accessing a REST API for to liosts of employees and list
 """
 
 import json
