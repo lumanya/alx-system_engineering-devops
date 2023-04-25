@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Script to configure HAProxy package on ubuntu
+
+# Update the server
+sudo apt-get update -y
+
+# Install PPA(Path Prefix Algorithm)
+sudo apt-get install --no-install-recommends software-properties-common -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.6 -y
+
+# Install HAProxy version 2.6 LTS
+sudo apt-get install haproxy=2.6.\* -y
+
+servr_config=\
+"
+fronted http_front
+    bind *:80
+	default_backend servers
+
+backend servers
+    balance roundrobin
+    server 66251-web-01 100.25.41.182 check
+    server 66251-web-02 52.87.153.103 check
+"
+
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable haproxy to be started by init script
+
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+sudo service haproxy restart
