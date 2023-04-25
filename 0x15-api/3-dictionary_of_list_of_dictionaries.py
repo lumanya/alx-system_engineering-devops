@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Accessing a REST API for to liosts of employees and list
+"""
+3-dictionary_of_list_of_dictionaries-
+Accessing a REST API for to liosts of employees and list
 """
 
 import json
