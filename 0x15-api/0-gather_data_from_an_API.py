@@ -8,27 +8,27 @@ import requests
 import sys
 
 
-if __name__ == '__main__':
-    employeeId = sys.argv[1]
-    baseUrl = "https://jsonplaceholder.typicode.com/users"
-    url = baseUrl + "/" + employeeId
+def display():
+    """ return API data"""
+    user_id = int(sys.argv[1])
+    user = requests.get(f"http://jsonplaceholder.typicode.com/users/{user_id}")
+    EMPLOYEE_NAME = user.json().get('name')
+    TOTAL_NUM_OF_TASKS = 0
+    NUMBER_OF_DONE_TASKS = 0
+    TASK_TITLE = []
+    todos = requests.get("http://jsonplaceholder.typicode.com/todos")
+    for todo in todos.json():
+        if todo.get('userId') == user_id:
+            TOTAL_NUM_OF_TASKS += 1
+            if todo.get('completed'):
+                NUMBER_OF_DONE_TASKS += 1
+                TASK_TITLE.append(todo.get('title'))
+    print("Employee {} is done with tasks({}/{}):"\
+          .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUM_OF_TASKS))
 
-    response = requests.get(url)
-    employeeName = response.json().get('name')
+    for task in TASK_TITLE:
+        print("\t {}".format(task))
 
-    todoUrl = url + "/todos"
-    response = requests.get(todoUrl)
-    tasks = response.json()
-    done = 0
-    done_tasks = []
 
-    for task in tasks:
-        if task.get('completed'):
-            done_tasks.append(task)
-            done += 1
-
-    print("Employee {} is done with tasks({}/{}):"
-          .format(employeeName, done, len(tasks)))
-
-    for task in done_tasks:
-        print("\t {}".format(task.get('title')))
+if __name__ == "__main__":
+    display()
