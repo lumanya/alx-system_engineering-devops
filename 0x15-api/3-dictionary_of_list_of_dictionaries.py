@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-"""
-3-dictionary_of_list_of_dictionaries-
-Accessing a REST API for to liosts of employees and list
-"""
+"""Accessing a REST API for to lists of employees and list"""
 
 import json
 import requests
+import sys
 
 
 if __name__ == '__main__':
