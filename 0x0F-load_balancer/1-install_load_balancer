@@ -3,7 +3,8 @@
 
 # Update the server
 sudo apt-get update -y
-sudo apt-get install nginx -y
+sudo apt-get install --no-install-recommends software-properties-common -y
+add-apt-repository ppa:vbernat/haproxy-2.6 -y
 # Install HAProxy version 2.6 LTS
 sudo apt-get install haproxy=2.6.\* -y
 
@@ -16,8 +17,8 @@ frontend http_front
 
 backend churchycodes-servers
 	balance roundrobin
-	server 66251-web-01 100.25.41.182:80 check
-	server 66251-web-02 52.87.153.103:80 check
+	server 66251-web-01 54.157.145.73:80 check
+	server 66251-web-02 52.91.145.8:80 check
 "
 
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
