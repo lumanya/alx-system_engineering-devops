@@ -52,6 +52,6 @@ backend churchycodes-servers
         # ssl_fc: Returns true when the fornt connection was made via an SSl/TSL tran>
         redirect scheme https code 301 if !{ ssl_fc }
         balance roundrobin
-        server 66251-web-01 100.25.41.182:80 check
-        server 66251-web-02 52.87.153.103:80 check
+        server 66251-web-01 54.157.145.73:80 check
+        server 66251-web-02 52.91.145.8:80 check
 
